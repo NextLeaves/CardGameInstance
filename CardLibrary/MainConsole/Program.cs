@@ -30,6 +30,18 @@ namespace MainConsole
                 if (i % 4 == 0) Console.WriteLine();
             }
 
+
+            Console.WriteLine("---------------------------");
+
+            Random rand = new Random();
+            int x = 0, y = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                x = rand.Next(52);
+                y = rand.Next(52);
+                Console.WriteLine($"{deck.GetCard(x).ToString()} \t : {deck.GetCard(y).ToString()} \t\t => {deck.GetCard(x) > deck.GetCard(y)}");
+            }
+
             Console.Read();
         }
     }

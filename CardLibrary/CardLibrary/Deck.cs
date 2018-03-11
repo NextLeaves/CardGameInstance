@@ -22,6 +22,24 @@ namespace CardLibrary
             }
         }
 
+        public Deck(bool isAceHigh) : this()
+        {
+            Card.isAceHigh = isAceHigh;
+        }
+
+        public Deck(bool useTrumps,Suit trump) : this()
+        {
+            Card.useTrumps = useTrumps;
+            Card.trump = trump;
+        }
+
+        public Deck(bool useTrumps,Suit trump,bool isAceHigh) : this()
+        {
+            Card.useTrumps = useTrumps;
+            Card.trump = trump;
+            Card.isAceHigh = isAceHigh;
+        }
+
         public Card GetCard(int cardNum)
         {
             if (cardNum >= 0 || cardNum < 52)
