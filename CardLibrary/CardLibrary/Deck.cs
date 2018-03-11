@@ -8,16 +8,16 @@ namespace CardLibrary
 {
     public class Deck
     {
-        private Card[] _deck;
+        private Cards _cards;
 
         public Deck()
         {
-            _deck = new Card[52];
+            _cards =  new Cards();
             for (int suitVal = 0; suitVal < 4; suitVal++)
             {
                 for (int rankVal = 1; rankVal < 14; rankVal++)
                 {
-                    _deck[suitVal * 13 + (rankVal - 1)] = new Card((Suit)suitVal, (Rank)rankVal);
+                    _cards.AddCard(new Card((Suit)suitVal, (Rank)rankVal));
                 }
             }
         }
@@ -26,7 +26,7 @@ namespace CardLibrary
         {
             if (cardNum >= 0 || cardNum < 52)
             {
-                return _deck[cardNum];
+                return _cards[cardNum];
             }
             else
             {
@@ -37,7 +37,7 @@ namespace CardLibrary
 
         public void Shuffle()
         {
-            Card[] newDeck = new Card[52];
+            Cards newCards = new Cards();
             bool[] assigned = new bool[52];
             Random itemRandom = new Random();
             for (int i = 0; i < 52; i++)
@@ -50,11 +50,11 @@ namespace CardLibrary
                     if (!assigned[foundCard])
                         founded = true;
                 }
-                newDeck[foundCard] = _deck[i];
+                newCards.AddCard(_cards[foundCard]);
                 assigned[foundCard] = true;
             }
 
-            newDeck.CopyTo(_deck, 0);
+            newCards.CopyTo(_cards, 0);
         }
     }
 }
